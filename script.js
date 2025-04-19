@@ -72,9 +72,64 @@ function loadCode(subject, filename) {
   )
     .then((res) => res.text())
     .then((code) => {
+      // Set the filename
       document.getElementById("fileNameTitle").textContent = filename;
+
+      // Get the file extension and determine the appropriate Prism language class
+      const fileExtension = filename.split(".").pop().toLowerCase();
+      let languageClass = "";
+
+      // Match file extensions to Prism language classes
+      switch (fileExtension) {
+        case "js":
+          languageClass = "language-javascript";
+          break;
+        case "html":
+          languageClass = "language-markup";
+          break;
+        case "css":
+          languageClass = "language-css";
+          break;
+        case "python":
+          languageClass = "language-python";
+          break;
+        case "java":
+          languageClass = "language-java";
+          break;
+        case "c":
+          languageClass = "language-c";
+          break;
+        case "cpp":
+          languageClass = "language-cpp";
+          break;
+        case "json":
+          languageClass = "language-json";
+          break;
+        case "xml":
+          languageClass = "language-xml";
+          break;
+        case "md":
+          languageClass = "language-markdown";
+          break;
+        case "rb":
+          languageClass = "language-ruby";
+          break;
+        case "go":
+          languageClass = "language-go";
+          break;
+        default:
+          languageClass = "language-text"; // Default language class if unknown
+          break;
+      }
+
+      // Get the code element and set its content
       const codeEl = document.getElementById("codeContent");
       codeEl.textContent = code;
+
+      // Clear any previous classes and add the new language class
+      codeEl.className = languageClass;
+
+      // Manually trigger Prism.js to highlight the new code
       Prism.highlightElement(codeEl);
     });
 }
