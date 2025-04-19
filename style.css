@@ -1,12 +1,12 @@
 :root {
-  --bg: #ffffff;
-  --surface: #f7f7f7;
-  --border: #e0e0e0;
-  --text: #1a1a1a;
-  --text-muted: #555;
-  --primary: #007bff;
-  --accent: #f0f0f0;
-  --code-bg: #f4f4f4;
+  --bg: #121212; /* Dark background */
+  --surface: #1f1f1f; /* Darker surface */
+  --border: #333; /* Dark border */
+  --text: #e0e0e0; /* Light text */
+  --text-muted: #aaa; /* Muted text */
+  --primary: #bb86fc; /* Light purple for primary action */
+  --accent: #2c2c2c; /* Dark accent for subtle elements */
+  --code-bg: #282828; /* Dark background for code */
 }
 
 body {
@@ -84,6 +84,8 @@ header .logo a {
   margin-bottom: 16px;
   border-radius: 4px;
   border: 1px solid var(--border);
+  background: var(--accent);
+  color: var(--text);
 }
 
 .file-list ul {
@@ -133,7 +135,7 @@ header .logo a {
   background: var(--primary);
   border: none;
   padding: 8px 12px;
-  color: white;
+  color: var(--bg);
   font-weight: 500;
   border-radius: 4px;
   cursor: pointer;
@@ -142,7 +144,7 @@ header .logo a {
 }
 
 .code-buttons button:hover {
-  background: #0056b3;
+  background: #9b4dff;
 }
 
 pre {
@@ -150,7 +152,7 @@ pre {
   padding: 16px;
   border-radius: 6px;
   overflow-x: auto;
-  color: #000;
+  color: #fff;
   font-size: 14px;
   flex-grow: 1;
 }
