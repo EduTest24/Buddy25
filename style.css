@@ -1,12 +1,12 @@
 :root {
-  --bg: #121212; /* Dark background */
-  --surface: #1f1f1f; /* Darker surface */
-  --border: #333; /* Dark border */
-  --text: #e0e0e0; /* Light text */
-  --text-muted: #aaa; /* Muted text */
-  --primary: #bb86fc; /* Light purple for primary action */
-  --accent: #2c2c2c; /* Dark accent for subtle elements */
-  --code-bg: #282828; /* Dark background for code */
+  --bg: #121212;
+  --surface: #1f1f1f;
+  --border: #333;
+  --text: #e0e0e0;
+  --text-muted: #aaa;
+  --primary: #bb86fc;
+  --accent: #2c2c2c;
+  --code-bg: #282828;
 }
 
 body {
@@ -14,6 +14,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
+  font-size: 16px;
 }
 
 /* Header */
@@ -24,6 +25,7 @@ header {
   padding: 12px 24px;
   background-color: var(--surface);
   border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
 }
 
 header .logo a {
@@ -31,11 +33,13 @@ header .logo a {
   font-weight: bold;
   color: var(--primary);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Tabs */
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   padding: 10px 24px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -43,13 +47,14 @@ header .logo a {
 
 .tabs div {
   padding: 8px 16px;
-  margin-right: 8px;
+  margin: 4px 4px 0 0;
   border-radius: 6px 6px 0 0;
   background: var(--accent);
   cursor: pointer;
   font-weight: 500;
   color: var(--text-muted);
   transition: background 0.2s;
+  font-size: 15px;
 }
 
 .tabs div:hover {
@@ -69,7 +74,6 @@ header .logo a {
   height: calc(100vh - 120px);
 }
 
-/* Sidebar / File List */
 .file-list {
   width: 25%;
   background: var(--surface);
@@ -80,12 +84,13 @@ header .logo a {
 
 .file-list input {
   width: 90%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 16px;
   border-radius: 4px;
   border: 1px solid var(--border);
   background: var(--accent);
   color: var(--text);
+  font-size: 15px;
 }
 
 .file-list ul {
@@ -100,6 +105,7 @@ header .logo a {
   cursor: pointer;
   color: var(--text);
   transition: background 0.2s;
+  font-size: 15px;
 }
 
 .file-list li:hover,
@@ -122,13 +128,16 @@ header .logo a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 16px;
+  gap: 10px;
 }
 
 .code-header span {
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
+  word-break: break-word;
 }
 
 .code-buttons button {
@@ -141,6 +150,7 @@ header .logo a {
   cursor: pointer;
   margin-left: 8px;
   transition: background 0.2s;
+  font-size: 14px;
 }
 
 .code-buttons button:hover {
@@ -155,9 +165,24 @@ pre {
   color: #fff;
   font-size: 14px;
   flex-grow: 1;
+  line-height: 1.5;
 }
 
-/* Responsive */
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+  .file-list {
+    width: 35%;
+  }
+
+  .code-viewer {
+    width: 65%;
+  }
+
+  .tabs div {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
@@ -166,6 +191,48 @@ pre {
 
   .file-list,
   .code-viewer {
-    width: 100%;
+    width: -webkit-fill-available;
+  }
+
+  .code-buttons button {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .code-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  header,
+  .tabs {
+    padding: 8px 12px;
+  }
+
+  .file-list input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .file-list li {
+    font-size: 14px;
+  }
+
+  pre {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .code-buttons button {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .code-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
